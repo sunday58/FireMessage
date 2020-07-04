@@ -50,7 +50,11 @@
             android:background="@drawable/rect_oval_white"
             android:elevation="2dp"
             android:hint="Fire your message"
-            android:padding="8dp" />
+            android:paddingStart="8dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingEnd="42dp"/>
 
         <ImageView
             android:id="@+id/imageView_send"

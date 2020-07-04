@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp">
 
@@ -19,14 +18,14 @@
             android:id="@+id/textView_message_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginStart="18dp"
             android:maxWidth="250dp"
             android:minWidth="120dp"
             android:paddingStart="8dp"
             android:paddingTop="4dp"
             android:paddingEnd="16dp"
-            android:text="this is my first chat, hope it is cool"
-            android:textColor="@android:color/white" />
+            android:text="this is my first chat, hope it is cool"/>
 
         <TextView
             android:id="@+id/textView_message_time"
