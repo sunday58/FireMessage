@@ -1,6 +1,7 @@
 package com.sundaydavid.firemessage.recyclerView.item
 
 import android.content.Context
+import android.os.Build
 import com.sundaydavid.firemessage.R
 import com.sundaydavid.firemessage.glide.GlideApp
 import com.sundaydavid.firemessage.model.ImageMessage
