@@ -107,6 +107,7 @@ object FireStoreUtil {
 
                     else
                         TODO("Add image message.")
+                    return@forEach
                 }
                 onListen(items)
             }

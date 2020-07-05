@@ -9,6 +9,7 @@ import com.sundaydavid.firemessage.model.TextMessage
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.item_text_message.*
+import kotlinx.android.synthetic.main.item_text_message.view.*
 import org.jetbrains.anko.backgroundResource
 import org.jetbrains.anko.wrapContent
 import org.w3c.dom.Text
@@ -40,6 +41,8 @@ class TextMessageItem(val message: TextMessage,
         else {
             viewHolder.message_root.apply {
                 backgroundResource = R.drawable.rect_round_primary_color
+                textView_message_text.setTextColor(resources.getColor(R.color.white))
+                textView_message_time.setTextColor(resources.getColor(R.color.white))
                 val lParams = FrameLayout.LayoutParams(wrapContent, wrapContent, Gravity.START)
                 this.layoutParams = lParams
             }
