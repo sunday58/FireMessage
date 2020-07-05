@@ -9,13 +9,18 @@ import com.sundaydavid.firemessage.util.FireStoreUtil
 class MyFirebaseInstanceIDService : FirebaseMessagingService() {
 
     override fun onNewToken(p0: String) {
+        
         super.onNewToken(p0)
         FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener { instanceIdResult ->
             val newRegistrationToken = instanceIdResult.token
             if (FirebaseAuth.getInstance().currentUser != null)
                 addTokenToFirestore(newRegistrationToken)
         }
+
     }
+
+
+    
     companion object {
         fun addTokenToFirestore(newRegistrationToken: String?) {
             if (newRegistrationToken == null) throw  NullPointerException("FCM token is null")
@@ -26,7 +31,6 @@ class MyFirebaseInstanceIDService : FirebaseMessagingService() {
 
                     tokens.add(newRegistrationToken)
                     FireStoreUtil.setFCMRegistrationToken(tokens)
-
             }
         }
     }

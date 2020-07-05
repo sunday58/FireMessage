@@ -1,5 +1,9 @@
 package com.sundaydavid.firemessage
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +14,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
+
+const val  CHANNEL_ID = "channel_id"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
@@ -27,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+        createNotificationChannel()
         setDestinationListener()
     }
 
@@ -51,5 +58,18 @@ class MainActivity : AppCompatActivity() {
     }
     private fun showDefaultToolBar(){
         supportActionBar?.show()
+    }
+
+    fun createNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "chat"
+            val description = "chat notifications"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
+            mChannel.description = description
+
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(mChannel)
+        }
     }
 }
