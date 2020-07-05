@@ -7,6 +7,7 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.sundaydavid.firemessage.model.*
+import com.sundaydavid.firemessage.recyclerView.item.ImageMessageItem
 import com.sundaydavid.firemessage.recyclerView.item.PersonItem
 import com.sundaydavid.firemessage.recyclerView.item.TextMessageItem
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -106,7 +107,7 @@ object FireStoreUtil {
                         items.add(TextMessageItem(it.toObject(TextMessage::class.java)!!, context))
 
                     else
-                        TODO("Add image message.")
+                        items.add(ImageMessageItem(it.toObject(ImageMessage::class.java)!!, context))
                     return@forEach
                 }
                 onListen(items)
