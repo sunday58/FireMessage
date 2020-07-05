@@ -10,5 +10,7 @@ object MessageType {
 interface Message {
     val time: Date
     val senderId: String
+    val receiverId: String
+    val senderName: String
     val type: String
 }

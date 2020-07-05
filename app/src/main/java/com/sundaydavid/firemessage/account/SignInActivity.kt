@@ -9,8 +9,11 @@ import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.sundaydavid.firemessage.MainActivity
 import com.sundaydavid.firemessage.R
+import com.sundaydavid.firemessage.service.MyFirebaseInstanceIDService
 import com.sundaydavid.firemessage.util.FireStoreUtil
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import org.jetbrains.anko.clearTask
@@ -51,6 +54,12 @@ class SignInActivity : AppCompatActivity() {
                 val progressDialog = indeterminateProgressDialog("setting up your account")
                 FireStoreUtil.initCurrentUserIfFirstTime {
                     startActivity(intentFor<MainActivity>().newTask().clearTask())
+
+                   FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {instanceIdResult ->
+                       val registrationToken = instanceIdResult.token
+
+                       MyFirebaseInstanceIDService.addTokenToFirestore(registrationToken)
+                   }
                     progressDialog.dismiss()
                 }
 
