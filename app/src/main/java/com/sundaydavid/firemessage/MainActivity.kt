@@ -15,7 +15,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
 
-const val  CHANNEL_ID = "channel_id"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
@@ -33,7 +32,16 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        createNotificationChannel()
+        //create notification channel
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create channel to show notifications.
+            val channelId = getString(R.string.default_notification_channel_id)
+            val channelName = getString(R.string.default_notification_channel_name)
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(NotificationChannel(channelId,
+                channelName, NotificationManager.IMPORTANCE_HIGH))
+        }
+
         setDestinationListener()
     }
 
@@ -58,18 +66,5 @@ class MainActivity : AppCompatActivity() {
     }
     private fun showDefaultToolBar(){
         supportActionBar?.show()
-    }
-
-    fun createNotificationChannel(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "chat"
-            val description = "chat notifications"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
-            mChannel.description = description
-
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(mChannel)
-        }
     }
 }

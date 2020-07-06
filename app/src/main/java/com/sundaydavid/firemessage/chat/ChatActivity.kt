@@ -3,16 +3,15 @@ package com.sundaydavid.firemessage.chat
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ListenerRegistration
 import com.sundaydavid.firemessage.AppConstants
 import com.sundaydavid.firemessage.R
 import com.sundaydavid.firemessage.model.ImageMessage
-import com.sundaydavid.firemessage.model.MessageType
 import com.sundaydavid.firemessage.model.TextMessage
 import com.sundaydavid.firemessage.model.User
 import com.sundaydavid.firemessage.util.FireStoreUtil
@@ -22,7 +21,6 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import kotlinx.android.synthetic.main.activity_chat.*
-import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
 import java.util.*
 
